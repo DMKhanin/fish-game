@@ -1,0 +1,59 @@
+.game {
+	background-image: url("img/fon1.jpg");
+	background-repeat: no-repeat;
+	border: 1px solid blue;
+	/*width: 1700px;*/
+	width: 1600px;
+	height: 900px;
+	overflow: hidden;
+}
+/*обобщение врагов*/
+.game > .enemy {
+	position: relative;
+	left: 1600px;
+	/*border: 1px solid blue;*/
+	width: 128px;
+	background-image: url("img/1.png");
+	/*transform: scale(-1,1);*/
+}
+
+/*собственно враги*/
+.enemy1 {	
+	top: 10px;
+	background-position: 0px 0px;
+	height: 128px;
+	transform: scale(-1,1);
+}
+.enemy2 {
+	top: 20px;
+	height: 90px;
+	background-position: 128px 0px;
+	transform: scale(-1,1);
+}
+.enemy3 {
+	top: 30px;
+	height: 65px;
+	background-position: 256px 0px;
+	transform: scale(-1,1);
+}
+.food{
+	top: 40px;
+	width: 128px;
+	height: 128px;
+	background-image: url("img/worm.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-color: red;
+	left: 1600px;
+	position: relative;
+}
+.player {
+	height: 76px;
+	width: 128px;
+	left: 40px;
+	top: 40px;
+	position: relative;
+	background-image: url("img/1.png");
+	background-position: 256px 128px;
+	/*transform: scale(-1,1);*/
+}
