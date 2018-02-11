@@ -26,7 +26,7 @@ function getRandomInt(min, max) {
 
 function addEnemy(){
 	if (enemycount < 5){
-		var id = getRandomInt(1,3);
+		var id = getRandomInt(0,4);
 		$(".game").append('<div class="enemy' + id + ' enemy move" value="enemy' + id + '"></div>');
 	}
 	gamespeed++;
@@ -104,7 +104,7 @@ $(document).ready(function () {
                         }
 						break;
 					case "enemy3": 
-						if (collision(enemy_left, enemy_top, 128, 65) == true) {
+						if (collision(enemy_left, enemy_top, 128, 95) == true) {
                             player.dead = true;
                         }
 						break;

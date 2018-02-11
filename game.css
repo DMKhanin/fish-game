@@ -33,7 +33,7 @@
 }
 .enemy3 {
 	top: 30px;
-	height: 65px;
+	height: 95px;
 	background-position: 256px 0px;
 	transform: scale(-1,1);
 }
