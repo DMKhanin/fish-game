@@ -79,3 +79,24 @@
 		background-position: 0px 0px;
 	}
 }
+.vodorosli{
+	height: 200px;
+	width: 1600px;
+	background-image: url("img/vodorosli1.png");
+	background-repeat: repeat-x;
+	background-size: 10%;
+	position: absolute;
+	top: 700px;
+	-webkit-animation: 5s vodorosli infinite; 
+}
+@-webkit-keyframes vodorosli{
+	0%{
+		background-position: 0px 0px;
+	}
+	50%{
+		background-position: 0px 10px;
+	}
+	100%{
+		background-position: 0px 0px;
+	}
+}

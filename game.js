@@ -29,6 +29,9 @@ function addEnemy(){
 		var id = getRandomInt(1,3);
 		$(".game").append('<div class="enemy' + id + ' enemy move" value="enemy' + id + '"></div>');
 	}
+	gamespeed++;
+	speedEnemy = 6 + gamespeed;
+	speedEnemy = 6 + gamespeed;
 }
 
 var speedEnemy = 10;
@@ -40,6 +43,7 @@ function deviation() {
     angle += 10;
     return Math.round(5 * Math.sin(angle * Math.PI / 180));
 }
+
 
 //object player
 var player = {
@@ -53,7 +57,7 @@ var player = {
 }
 
 var enemycount = 0;
-
+var gamespeed = 4;
 
 $(document).ready(function () {
 
@@ -64,6 +68,18 @@ $(document).ready(function () {
 
     function go() {
         if (player.dead == false) {
+			$(".vodorosli").each(function(){
+				$(this).css({
+					"left": parseInt($(this).css('left'))-(gamespeed-2),
+					"top": "700px"
+				});
+				if (parseInt($(this).css('left'))<-1600){
+					$(this).css({
+						"left":"1600px",
+						"top": "700px"
+					});
+				}
+			});
             $('.move').each(function () {
                 var enemy_left = parseInt($(this).css('left')) - speedEnemy;
                 var enemy_top = parseInt($(this).css('top')) + deviation();
