@@ -91,12 +91,12 @@
 }
 @-webkit-keyframes vodorosli{
 	0%{
-		background-position: 0px 0px;
+		transform: skew(-10deg,0deg)
 	}
 	50%{
-		background-position: 0px 10px;
+		transform: skew(5deg,0deg)
 	}
 	100%{
-		background-position: 0px 0px;
+		transform: skew(-10deg,0deg)
 	}
 }
