@@ -1,16 +1,35 @@
+
 function collision(enemy_position_x, enemy_position_y, enemy_width, enemy_height) {
-    result = 0;
-    if (player.pos_x + player.width >= enemy_position_x && player.pos_x <= enemy_position_x + enemy_width) {
-        result++;
-    }
-    if (player.pos_y + player.height >= enemy_position_y && player.pos_y <= enemy_position_y + enemy_height) {
-        result++;
-    }
-    if (result == 2) {
-        return true;
-    }
-    return false;
+	var result = 0;
+	if (player.pos_x + player.width >= enemy_position_x){
+		result++;
+	}
+	if (player.pos_x <= enemy_position_x + enemy_width){
+		result++;
+	}
+	if (player.pos_y + player.height >= enemy_position_y){
+		result++;
+	}
+	if (player.pos_y <= enemy_position_y + enemy_height){
+		result++;
+	}
+	if (result==4){
+		return true;
+	}
+	return false;
+
 }//end function
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function addEnemy(){
+	if (enemycount < 5){
+		var id = getRandomInt(1,3);
+		$(".game").append('<div class="enemy' + id + ' enemy move" value="enemy' + id + '"></div>');
+	}
+}
 
 var speedEnemy = 10;
 var angle = 0;
@@ -19,19 +38,21 @@ var speedPlayer = 10;
 
 function deviation() {
     angle += 10;
-    return Math.round(10 * Math.sin(angle * Math.PI / 180));
+    return Math.round(5 * Math.sin(angle * Math.PI / 180));
 }
 
 //object player
 var player = {
     width: 128,
     height: 76,
-    pos_x: 20,
+    pos_x: 250,
     pos_y: 250,
     hp: 100,
     score: 0,
     dead: false
 }
+
+var enemycount = 0;
 
 
 $(document).ready(function () {
@@ -48,24 +69,35 @@ $(document).ready(function () {
                 var enemy_top = parseInt($(this).css('top')) + deviation();
                 if (enemy_left + parseInt($(this).css('width')) < 0) {
                     enemy_left = 1600;
-                    enemy_top = 10;
+                    enemy_top = getRandomInt(0,900-128);
                     angle = 0;
-                }
+					}
                 $(this).css({'left': enemy_left, 'top': enemy_top});
                 console.log("y -> " + player.pos_y + " x -> " + player.pos_x);
                 console.log("y -> " + enemy_top + " x-> " + enemy_left);
                 var type = $(this).attr("value");
                 switch (type) {
-                    case "enemy":
+                    case "enemy1":
                         if (collision(enemy_left, enemy_top, 128, 128) == true) {
                             player.dead = true;
                         }
                         break;
+					case "enemy2":
+						if (collision(enemy_left, enemy_top, 128, 90) == true) {
+                            player.dead = true;
+                        }
+						break;
+					case "enemy3": 
+						if (collision(enemy_left, enemy_top, 128, 65) == true) {
+                            player.dead = true;
+                        }
+						break;
                     case "food":
-                        if (collision(enemy_left, enemy_top, 128, 128) == true) {
+                        if (collision(enemy_left, enemy_top, 68, 68) == true) {
                             player.score++;
                             $(this).css({
-                                "left": 1600
+                                "left" : 1600,
+								"top" : getRandomInt(0,900-128)
                             })
                             console.log(player.score);
                         }
@@ -79,6 +111,7 @@ $(document).ready(function () {
     }
 
     setInterval(go, 100);
+	setInterval(addEnemy, 10000);
 });	//end ready
 $(document).keydown(function (key) {
     if (player.dead == false) {

@@ -6,10 +6,11 @@
 	width: 1600px;
 	height: 900px;
 	overflow: hidden;
+	position: absolute;
 }
 /*обобщение врагов*/
 .game > .enemy {
-	position: relative;
+	position: absolute;
 	left: 1600px;
 	/*border: 1px solid blue;*/
 	width: 128px;
@@ -19,7 +20,7 @@
 
 /*собственно враги*/
 .enemy1 {	
-	top: 10px;
+	top: 150px;
 	background-position: 0px 0px;
 	height: 128px;
 	transform: scale(-1,1);
@@ -38,22 +39,43 @@
 }
 .food{
 	top: 40px;
-	width: 128px;
-	height: 128px;
+	width: 53px;
+	height: 64px;
 	background-image: url("img/worm.png");
-	background-size: 100%;
-	background-repeat: no-repeat;
-	background-color: red;
 	left: 1600px;
-	position: relative;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	animation: 1s wormanimation infinite;
+	-webkit-animation: 1s wormanimation infinite; 
+	-moz-animation: 1s wormanimation infinite; 
+	-o-animation: 1s wormanimation infinite; 
 }
 .player {
 	height: 76px;
 	width: 128px;
 	left: 40px;
 	top: 40px;
-	position: relative;
+	position: absolute;
 	background-image: url("img/1.png");
 	background-position: 256px 128px;
+	
 	/*transform: scale(-1,1);*/
+}
+@-webkit-keyframes wormanimation{
+	0%{
+		background-position: 0px 0px;
+	}
+	49%{
+		background-position: 0px 0px;
+	}
+	50%{
+		background-position: -59px 0px;
+	}
+	99%{
+		background-position: -59px 0px;
+	}
+	100%{
+		background-position: 0px 0px;
+	}
 }
